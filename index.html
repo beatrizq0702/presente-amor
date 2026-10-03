@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">=
+<head>
+<link rel="icon" type="image/jpeg" href="emoji.png?v=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para mi bebito fiu fiu  ❤️</title>
+  <link rel="stylesheet" href="style.css" >
+</head>
+<body>
+
+  <div class="stars"></div>
+
+  <!-- Tela de abertura -->
+  <main id="home" class="screen active">
+    <div class="garage">
+      <div class="sign">MY LOVE GARAGE</div>
+
+      <div class="hero">
+        <div class="speed-lines"></div>
+
+        <div class="car" id="car">
+          <div class="car-top">
+            <span class="window w1"></span>
+            <span class="window w2"></span>
+          </div>
+          <div class="car-body">
+            <span class="hotwheels">HOT WHEELS</span>
+            <span class="headlight"></span>
+          </div>
+          <span class="wheel left"></span>
+          <span class="wheel right"></span>
+        </div>
+
+        <div class="road">
+          <div class="road-line"></div>
+        </div>
+      </div>
+
+      <h1>Una carrera hasta tu corazoncito  ❤️</h1>
+      <p class="subtitle">Tu regalo te esta esperando en el box...</p>
+
+      <button class="main-btn" id="startBtn">🏁 ENTRAR EN EL GARAJE </button>
+    </div>
+  </main>
+
+  <!-- Tela principal -->
+  <main id="gift" class="screen">
+    <section class="card">
+      <div class="badge">🏆 MI PILOTO FAVORITO ❤️ </div>
+
+      <h2>Para ti mi vida ❤️</h2>
+
+      <div class="photos">
+        <div class="photo-frame">
+          <img src="foto1.jpeg" alt="Nossa foto 1"
+               onerror="this.style.display='none'; this.parentElement.classList.add('placeholder')">
+          
+        </div>
+
+        <div class="photo-frame">
+          <img src="foto2.jpeg" alt="Nossa foto 2"
+               onerror="this.style.display='none'; this.parentElement.classList.add('placeholder')">
+       
+        </div>
+      </div>
+
+      <p class="love-text">
+       Si nuestra historia fuera una carrera, elegiría dar todas las vueltas al mundo a tu lado.❤️
+       Haces que mis días sean más hermosos y mi corazón siempre se acerela cuando estoy contigo. TE AMO ❤️
+      </p>
+
+      <div class="counter-box">
+        <small>🏎️ TIEMPO DE NUESTRA HISTÓRIA</small>
+        <div id="counter">Cargando...</div>
+      </div>
+
+      <div class="buttons">
+        <button class="main-btn" id="presentBtn">🎁 ABRIR EL REGALO</button>
+        <button class="music-btn" id="musicBtn">🎵 Tocar música</button>
+      </div>
+
+      <p class="hint">MI BB TE AMO MUCHO SII, COMO SIEMPRE LO DECIMOS JUNTOS HASTA EL FINAL NOBE VIDA  ❤️</p>
+    </section>
+  </main>
+
+  <!-- Tela do presente -->
+  <main id="present" class="screen">
+    <section class="letter-card">
+      <div class="gift-box" id="giftBox">
+        <div class="lid">🎁</div>
+        <div class="box-body"></div>
+      </div>
+
+      <div class="letter hidden" id="letter">
+        <div class="letter-top">🏁 CHECKERED LOVE 🏁</div>
+        <h2>Una carta para ti ❤️</h2>
+
+        <p>
+          Mi vida...
+        </p>
+
+        <p>
+          Este pequeño regalo es una forma de poner en palabras un poquito de lo que
+           yo siento por ti ❤️
+
+      
+        </p>
+
+        <p>
+          Gracias  por cada sonrisa, cada abrazo, cada momento y  por hacer parte
+          da mi vida. Que nuestra história continue acelerando, pero nunca
+          pierda la alegría de disfrutar cada curva juntos. 🏎️❤️
+        </p>
+
+        <p class="signature">Con amor,<br><strong>De tu bebé  ❤️</strong></p>
+
+        <button class="main-btn" id="backBtn">🏁 VOLVER AL GARAJE</button>
+      </div>
+    </section>
+  </main>
+
+  <audio id="music" loop src="musica.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --red: #e10600;
+  --red2: #ff3b30;
+  --dark: #070707;
+  --silver: #c8c8c8;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background:
+    radial-gradient(circle at 50% 20%, #4a0505 0, #120202 35%, #030303 75%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(45deg, rgba(255,255,255,.025) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255,255,255,.025) 25%, transparent 25%);
+  background-size: 40px 40px;
+}
+
+.screen {
+  min-height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 15px;
+  position: relative;
+}
+
+.screen.active {
+  display: flex;
+  animation: fade .7s ease;
+}
+
+.garage {
+  width: min(950px, 96vw);
+  text-align: center;
+}
+
+.sign {
+  display: inline-block;
+  padding: 10px 25px;
+  margin-bottom: 15px;
+  border: 2px solid #aaa;
+  background: #111;
+  box-shadow: 0 0 20px rgba(255,0,0,.35);
+  font-weight: 900;
+  letter-spacing: 4px;
+  transform: skew(-8deg);
+}
+
+.hero {
+  height: 310px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #333;
+  border-radius: 25px;
+  background: linear-gradient(#111, #1c1c1c 55%, #080808 56%);
+  box-shadow: 0 20px 70px rgba(0,0,0,.8);
+}
+
+.road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 105px;
+  background: #151515;
+  border-top: 5px solid #333;
+}
+
+.road-line {
+  position: absolute;
+  top: 48px;
+  width: 100%;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    white 0 80px,
+    transparent 80px 140px
+  );
+  animation: road 1s linear infinite;
+}
+
+.car {
+  position: absolute;
+  z-index: 4;
+  width: 230px;
+  height: 105px;
+  left: -260px;
+  bottom: 65px;
+  animation: drive 4.5s cubic-bezier(.2,.7,.2,1) infinite;
+}
+
+.car-body {
+  position: absolute;
+  left: 8px;
+  bottom: 10px;
+  width: 215px;
+  height: 65px;
+  border-radius: 70px 25px 16px 16px;
+  background: linear-gradient(145deg, #ff352d, #9e0000 65%, #450000);
+  border: 3px solid #ff665f;
+  box-shadow: 0 0 25px rgba(255,0,0,.65), inset 0 -12px 15px rgba(0,0,0,.35);
+}
+
+.car-top {
+  position: absolute;
+  left: 68px;
+  bottom: 67px;
+  width: 105px;
+  height: 55px;
+  border-radius: 65px 65px 5px 5px;
+  background: #b60000;
+  border: 3px solid #ff665f;
+  z-index: 2;
+}
+
+.window {
+  position: absolute;
+  top: 7px;
+  width: 42px;
+  height: 28px;
+  background: linear-gradient(135deg, #8ad5ff, #06131a 70%);
+  border: 2px solid #333;
+}
+
+.w1 { left: 8px; transform: skew(-12deg); }
+.w2 { right: 8px; transform: skew(12deg); }
+
+.hotwheels {
+  position: absolute;
+  right: 20px;
+  top: 22px;
+  font-size: 10px;
+  font-weight: 900;
+  transform: rotate(-6deg);
+}
+
+.headlight {
+  position: absolute;
+  right: 5px;
+  top: 13px;
+  width: 10px;
+  height: 18px;
+  background: #fff7aa;
+  border-radius: 50%;
+  box-shadow: 0 0 18px #fff;
+}
+
+.wheel {
+  position: absolute;
+  bottom: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #050505;
+  border: 7px solid #555;
+  box-shadow: inset 0 0 0 5px #111;
+  z-index: 5;
+}
+
+.wheel.left { left: 35px; }
+.wheel.right { right: 30px; }
+
+h1 {
+  margin-top: 28px;
+  font-size: clamp(28px, 5vw, 52px);
+  text-transform: uppercase;
+  font-style: italic;
+  text-shadow: 4px 4px 0 #710000, 0 0 25px rgba(255,0,0,.5);
+}
+
+.subtitle {
+  margin: 12px 0 25px;
+  color: #ddd;
+  font-size: 18px;
+}
+
+.main-btn, .music-btn {
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 15px 28px;
+  font-weight: 900;
+  font-size: 16px;
+  transition: .25s;
+}
+
+.main-btn {
+  color: white;
+  background: linear-gradient(135deg, #ff352d, #a90000);
+  box-shadow: 0 10px 30px rgba(255,0,0,.28);
+}
+
+.music-btn {
+  color: white;
+  background: #242424;
+  border: 1px solid #555;
+}
+
+.main-btn:hover, .music-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 15px 35px rgba(255,0,0,.42);
+}
+
+.card, .letter-card {
+  width: min(720px, 95vw);
+  padding: 35px;
+  text-align: center;
+  border: 1px solid #6b1a1a;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(35,35,35,.96), rgba(7,7,7,.98));
+  box-shadow: 0 30px 90px rgba(0,0,0,.8), 0 0 40px rgba(255,0,0,.12);
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 20px;
+  background: #111;
+  border: 1px solid #555;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.card h2, .letter-card h2 {
+  margin: 18px 0 25px;
+  font-size: clamp(28px, 5vw, 42px);
+  color: #ff413a;
+}
+
+.photos {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.photo-frame {
+  width: 210px;
+  height: 210px;
+  border: 7px solid white;
+  background: #151515;
+  transform: rotate(-3deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,.5);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-frame:nth-child(2) {
+  transform: rotate(3deg);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-frame span {
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.love-text {
+  margin: 25px auto;
+  max-width: 600px;
+  color: #ddd;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.counter-box {
+  padding: 18px;
+  border-radius: 18px;
+  background: #0c0c0c;
+  border: 1px solid #3b3b3b;
+  margin: 20px 0;
+}
+
+.counter-box small {
+  color: #aaa;
+  letter-spacing: 2px;
+}
+
+#counter {
+  margin-top: 8px;
+  color: #fff;
+  font-size: clamp(19px, 4vw, 28px);
+  font-weight: 900;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hint {
+  margin-top: 15px;
+  color: #777;
+  font-size: 12px;
+}
+
+.gift-box {
+  width: 180px;
+  height: 170px;
+  margin: 0 auto 25px;
+  position: relative;
+  cursor: pointer;
+  animation: float 2s ease-in-out infinite;
+}
+
+.box-body {
+  position: absolute;
+  bottom: 0;
+  width: 180px;
+  height: 120px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #d80000, #720000);
+  border: 3px solid #ff5750;
+}
+
+.box-body::before {
+  content: "";
+  position: absolute;
+  left: 70px;
+  width: 35px;
+  height: 100%;
+  background: #ffd52b;
+}
+
+.lid {
+  position: absolute;
+  z-index: 3;
+  top: 20px;
+  left: -10px;
+  width: 200px;
+  height: 48px;
+  border-radius: 10px;
+  background: #e90000;
+  border: 3px solid #ff5750;
+  font-size: 30px;
+  padding-top: 4px;
+  transition: .8s;
+}
+
+.gift-box.open .lid {
+  transform: translateY(-90px) rotate(-8deg);
+}
+
+.letter {
+  max-width: 650px;
+  margin: auto;
+  padding: 28px;
+  border-radius: 22px;
+  background: #f5ead2;
+  color: #351b12;
+  text-align: left;
+  box-shadow: 0 20px 70px rgba(0,0,0,.7);
+}
+
+.letter.hidden {
+  display: none;
+}
+
+.letter-top {
+  text-align: center;
+  color: #a60000;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.letter h2 {
+  text-align: center;
+  color: #b00000;
+}
+
+.letter p {
+  line-height: 1.8;
+  margin: 15px 0;
+}
+
+.signature {
+  text-align: right;
+  margin-top: 30px !important;
+}
+
+.letter .main-btn {
+  display: block;
+  margin: 25px auto 0;
+}
+
+@keyframes drive {
+  0% { left: -260px; transform: translateY(0) rotate(0); }
+  35% { transform: translateY(-7px) rotate(-1deg); }
+  65% { transform: translateY(5px) rotate(1deg); }
+  100% { left: calc(100% + 30px); transform: translateY(0) rotate(0); }
+}
+
+@keyframes road {
+  from { background-position: 0; }
+  to { background-position: -140px; }
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: scale(.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@media (max-width: 600px) {
+  .hero { height: 250px; }
+  .card, .letter-card { padding: 23px 16px; }
+  .photo-frame { width: 150px; height: 150px; }
+}
